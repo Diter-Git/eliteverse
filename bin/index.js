@@ -5,8 +5,9 @@ import boxen from "boxen";
 import clear from "clear";
 import figlet from "figlet";
 import gradient from "gradient-string";
+import inquirer from "inquirer";
+import open from "open";
 
-// Clear terminal
 clear();
 
 console.log(
@@ -28,14 +29,40 @@ ${chalk.green.bold("Instagram:")} ${chalk.cyan("www.instagram.com/raahhmm__?igsh
         padding: 1,
         margin: 1,
         borderStyle: "double",
-        borderColor: "cyan",
+        borderColor: "gray",
     }
 );
 
 console.log(bio);
 
 console.log(
-    chalk.yellow("Try using ") +
+    chalk.yellow("💡 Suggestion: Try using ") +
     chalk.blue("cmd/ctrl + click") +
-    chalk.yellow(" on the links above to open them.")
+    chalk.yellow(" on the links above to open/copy")
 );
+
+inquirer
+  .prompt([
+    {
+      type: "list",
+      name: "action",
+      message: "What do you want to do?",
+      choices: [
+        { name: "📧 Send me an email?", value: "email" },
+        { name: "❌ Just quit!", value: "quit" },
+      ],
+    },
+  ])
+  .then((answers) => {
+    if (answers.action === "email") {
+      console.log(
+        "\n✅ Done, your email client should open soon.\nI'll keep an eye out for your message! 👀"
+      );
+      open("mailto:ramvj2005@gmail.com");
+    } else if (answers.action === "quit") {
+      console.log(
+        "\n👋 Thanks for stopping by.\nIf you ever decide to return, feel free to reach out.\nHave a great day! 🎉"
+      );
+    }
+  });
+
