@@ -1,33 +1,31 @@
 {
-  "name": "npx-eliteverse",
-  "version": "1.0.3",
-  "description": "Eliteverse - A personalized CLI card",
+  "name": "eliteverse",
+  "version": "1.0.4",
+  "description": "Eliteverse CLI - A simple command-line tool",
+  "main": "index.js",
   "bin": {
     "eliteverse": "./bin/index.js"
   },
   "scripts": {
-    "start": "node bin/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Rxm46/eliteverse.git"
+    "start": "node bin/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "cli",
-    "npx",
-    "eliteverse",
-    "developer-card",
-    "terminal"
+    "nodejs",
+    "terminal",
+    "eliteverse"
   ],
   "author": "Ram Kumar",
   "license": "MIT",
   "dependencies": {
     "chalk": "^5.3.0",
-    "boxen": "^7.0.1",
+    "boxen": "^7.1.1",
     "clear": "^0.1.0",
     "figlet": "^1.5.2",
     "gradient-string": "^2.0.1",
-    "inquirer": "^9.2.6",
+    "inquirer": "^9.2.1",
     "open": "^9.0.0"
   }
 }
+
