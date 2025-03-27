@@ -7,6 +7,7 @@ import figlet from "figlet";
 import gradient from "gradient-string";
 import inquirer from "inquirer";
 import open from "open";
+import { exec } from "child_process";
 
 // Clear the terminal
 clear();
@@ -44,46 +45,47 @@ console.log(
     chalk.yellow(" on the links above to open/copy")
 );
 
-// Function to prompt user actions
-function promptUser() {
-    inquirer
-        .prompt([
-            {
-                type: "list",
-                name: "action",
-                message: "🤖 What do you want to do?",
-                choices: [
-                    "🌐 Open GitHub",
-                    "💼 Open LinkedIn",
-                    "📧 Send me an email",
-                    "🚪 Just quit!"
-                ],
-            },
-        ])
-        .then((answers) => {
-            switch (answers.action) {
-                case "🌐 Open GitHub":
-                    open("https://github.com/Rxm46");
-                    console.log("🚀 Opening GitHub...");
-                    break;
+// Function to handle user selection
+async function promptUser() {
+    const { action } = await inquirer.prompt([
+        {
+            type: "list",
+            name: "action",
+            message: "🤖 What do you want to do?",
+            choices: [
+                "🌐 Open GitHub",
+                "💼 Open LinkedIn",
+                "📧 Send me an email",
+                "🚪 Just quit!"
+            ],
+        },
+    ]);
 
-                case "💼 Open LinkedIn":
-                    open("https://www.linkedin.com/in/ramkumar46");
-                    console.log("🔗 Opening LinkedIn...");
-                    break;
+    switch (action) {
+        case "🌐 Open GitHub":
+            console.log("🚀 Opening GitHub...");
+            await open("https://github.com/Rxm46");
+            break;
 
-                case "📧 Send me an email":
-                    console.log("📩 Opening mail...");
-                    require("child_process").exec("start mailto:ramvj2005@gmail.com");
-                    break;
+        case "💼 Open LinkedIn":
+            console.log("🔗 Opening LinkedIn...");
+            await open("https://www.linkedin.com/in/ramkumar46");
+            break;
 
-                case "🚪 Just quit!":
-                    console.log("👋 Goodbye!");
-                    return; // Exit loop
-            }
-            promptUser(); // Call again to keep looping
-        });
+        case "📧 Send me an email":
+            console.log("📩 Opening mail...");
+            exec("start mailto:ramvj2005@gmail.com");
+            break;
+
+        case "🚪 Just quit!":
+            console.log("👋 Goodbye!");
+            process.exit(0);
+    }
+
+    // Ask user again if they didn't quit
+    promptUser();
 }
 
-// Start the interactive prompt
+// Start CLI prompt
 promptUser();
+
