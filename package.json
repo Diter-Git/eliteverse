@@ -21,7 +21,7 @@
     "figlet": "^1.8.0",
     "gradient-string": "^2.0.2",
     "inquirer": "^9.3.7",
+    "npx-eliteverse": "^1.0.10",
     "open": "^9.1.0"
-  },
-  "devDependencies": {}
+  }
 }
