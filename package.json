@@ -1,15 +1,27 @@
 {
   "name": "npx-eliteverse",
-  "version": "1.0.8",
-  "main": "index.js",
+  "version": "1.0.9",
+  "type": "module",
+  "main": "bin/index.js",
   "scripts": {
+    "start": "node bin/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "bin": {
-    "eliteverse": "./bin/index.js"
-  }
+    "eliteverse": "bin/index.js"
+  },
+  "keywords": [],
+  "author": "Ram Kumar",
+  "license": "ISC",
+  "description": "A CLI tool for Eliteverse",
+  "dependencies": {
+    "boxen": "^7.1.1",
+    "chalk": "^5.4.1",
+    "clear": "^0.1.0",
+    "figlet": "^1.8.0",
+    "gradient-string": "^2.0.2",
+    "inquirer": "^9.3.7",
+    "open": "^9.1.0"
+  },
+  "devDependencies": {}
 }
